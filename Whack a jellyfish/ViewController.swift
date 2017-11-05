@@ -8,14 +8,17 @@
 
 import UIKit
 import ARKit
+import Each
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var timer: UILabel!
+    @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var SceneView: ARSCNView!
     @IBOutlet weak var play: UIButton!
     
     let configuration = ARWorldTrackingConfiguration()
+    var timer = Each(1).seconds
+    var countdown = 10
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,16 +48,19 @@ class ViewController: UIViewController {
         if hitTest.isEmpty {
             
         } else {
-            let results = hitTest.first!
-            let node = results.node
-            if node.animationKeys.isEmpty {
-                SCNTransaction.begin()
-                self.animateNode(node: node)
-                SCNTransaction.completionBlock = {
-                    node.removeFromParentNode()
-                    self.addNode()
+            if self.countdown > 0 {
+                let results = hitTest.first!
+                let node = results.node
+                if node.animationKeys.isEmpty {
+                    SCNTransaction.begin()
+                    self.animateNode(node: node)
+                    SCNTransaction.completionBlock = {
+                        node.removeFromParentNode()
+                        self.addNode()
+                        self.restoreTimer()
+                    }
+                    SCNTransaction.commit()
                 }
-                SCNTransaction.commit()
             }
         }
         
@@ -73,14 +79,39 @@ class ViewController: UIViewController {
     func randomNumbers(firstNum: CGFloat, secondNum: CGFloat) -> CGFloat {
         return CGFloat(arc4random()) / CGFloat(UINT32_MAX) * abs(firstNum - secondNum) + min(firstNum, secondNum)
     }
+    
+    func setTimers() {
+        self.timer.perform { () -> NextStep in
+            self.countdown -= 1
+            self.timerLabel.text = String(self.countdown)
+            if self.countdown <= 0 {
+                self.timerLabel.text = "You lose"
+                return .stop
+            }
+            return .continue
+        }
+    }
+    
+    func restoreTimer() {
+        self.countdown = 10
+        self.timerLabel.text = String(self.countdown)
+    }
 
 
     @IBAction func play(_ sender: UIButton) {
+        self.setTimers()
         self.addNode()
         self.play.isEnabled = false
     }
     
     @IBAction func reset(_ sender: UIButton) {
+        self.timer.stop()
+        self.restoreTimer()
+        self.play.isEnabled = true
+        
+        self.SceneView.scene.rootNode.enumerateChildNodes { (node, _) in
+            node.removeFromParentNode()
+        }
     }
     
     

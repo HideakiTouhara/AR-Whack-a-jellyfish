@@ -83,6 +83,7 @@
                         <outlet property="SceneView" destination="uYQ-a5-HG5" id="xHV-TR-f99"/>
                         <outlet property="play" destination="E2U-VK-WNx" id="btM-p9-krn"/>
                         <outlet property="timer" destination="j7C-xJ-t0x" id="oam-Go-7qs"/>
+                        <outlet property="timerLabel" destination="j7C-xJ-t0x" id="f5l-Ww-79Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
