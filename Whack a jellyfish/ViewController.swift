@@ -12,6 +12,8 @@ import ARKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var SceneView: ARSCNView!
+    @IBOutlet weak var play: UIButton!
+    
     let configuration = ARWorldTrackingConfiguration()
 
     override func viewDidLoad() {
@@ -57,7 +59,7 @@ class ViewController: UIViewController {
         spin.fromValue = node.presentation.position
         spin.toValue = SCNVector3(node.presentation.position.x - 0.2,node.presentation.position.y - 0.2,node.presentation.position.z - 0.2)
         spin.autoreverses = true
-        spin.duration = 0.2
+        spin.duration = 0.07
         spin.repeatCount = 5
         node.addAnimation(spin, forKey: "position")
     }
@@ -65,6 +67,7 @@ class ViewController: UIViewController {
 
     @IBAction func play(_ sender: UIButton) {
         self.addNode()
+        self.play.isEnabled = false
     }
     
     @IBAction func reset(_ sender: UIButton) {

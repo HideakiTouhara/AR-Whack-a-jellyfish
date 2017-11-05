@@ -58,6 +58,7 @@
                     </view>
                     <connections>
                         <outlet property="SceneView" destination="uYQ-a5-HG5" id="xHV-TR-f99"/>
+                        <outlet property="play" destination="E2U-VK-WNx" id="btM-p9-krn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
