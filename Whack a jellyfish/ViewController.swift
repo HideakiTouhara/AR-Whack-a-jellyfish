@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     func addNode() {
         let jellyfishScene = SCNScene(named: "TooLarge/art.scnassets/Jellyfish.scn")
         let jellyfishNode = jellyfishScene?.rootNode.childNode(withName: "Jellyfish", recursively: false)
-        jellyfishNode?.position = SCNVector3(0,0,-1)
+        jellyfishNode?.position = SCNVector3(randomNumbers(firstNum: -1, secondNum: 1), randomNumbers(firstNum: -0.5, secondNum: 0.5), randomNumbers(firstNum: -1, secondNum: 1))
         self.SceneView.scene.rootNode.addChildNode(jellyfishNode!)
     }
     
@@ -45,10 +45,15 @@ class ViewController: UIViewController {
             
         } else {
             let results = hitTest.first!
-            let geometry = results.node.geometry
             let node = results.node
             if node.animationKeys.isEmpty {
+                SCNTransaction.begin()
                 self.animateNode(node: node)
+                SCNTransaction.completionBlock = {
+                    node.removeFromParentNode()
+                    self.addNode()
+                }
+                SCNTransaction.commit()
             }
         }
         
@@ -62,6 +67,10 @@ class ViewController: UIViewController {
         spin.duration = 0.07
         spin.repeatCount = 5
         node.addAnimation(spin, forKey: "position")
+    }
+    
+    func randomNumbers(firstNum: CGFloat, secondNum: CGFloat) -> CGFloat {
+        return CGFloat(arc4random()) / CGFloat(UINT32_MAX) * abs(firstNum - secondNum) + min(firstNum, secondNum)
     }
 
 
