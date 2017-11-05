@@ -11,6 +11,7 @@ import ARKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var timer: UILabel!
     @IBOutlet weak var SceneView: ARSCNView!
     @IBOutlet weak var play: UIButton!
     
