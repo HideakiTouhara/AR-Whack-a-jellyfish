@@ -15,6 +15,7 @@
 		072B59C01FAF273600D9A4AE /* Textures in Resources */ = {isa = PBXBuildFile; fileRef = 072B59BE1FAF273600D9A4AE /* Textures */; };
 		072B59C11FAF273600D9A4AE /* Jellyfish.dae in Resources */ = {isa = PBXBuildFile; fileRef = 072B59BF1FAF273600D9A4AE /* Jellyfish.dae */; };
 		072B59C31FAF27C500D9A4AE /* Jellyfish.scn in Resources */ = {isa = PBXBuildFile; fileRef = 072B59C21FAF27C500D9A4AE /* Jellyfish.scn */; };
+		072B59C51FAF28D200D9A4AE /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 072B59C41FAF28D200D9A4AE /* art.scnassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +28,8 @@
 		072B59B71FAF1E1400D9A4AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		072B59BE1FAF273600D9A4AE /* Textures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Textures; sourceTree = "<group>"; };
 		072B59BF1FAF273600D9A4AE /* Jellyfish.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Jellyfish.dae; sourceTree = "<group>"; };
-		072B59C21FAF27C500D9A4AE /* Jellyfish.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Jellyfish.scn; sourceTree = "<group>"; };
+		072B59C21FAF27C500D9A4AE /* Jellyfish.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = Jellyfish.scn; path = art.scnassets/Jellyfish.scn; sourceTree = "<group>"; };
+		072B59C41FAF28D200D9A4AE /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		072B59BD1FAF25EA00D9A4AE /* TooLarge */ = {
 			isa = PBXGroup;
 			children = (
+				072B59C41FAF28D200D9A4AE /* art.scnassets */,
 				072B59C21FAF27C500D9A4AE /* Jellyfish.scn */,
 				072B59BF1FAF273600D9A4AE /* Jellyfish.dae */,
 				072B59BE1FAF273600D9A4AE /* Textures */,
@@ -143,6 +146,7 @@
 				072B59C01FAF273600D9A4AE /* Textures in Resources */,
 				072B59B61FAF1E1400D9A4AE /* LaunchScreen.storyboard in Resources */,
 				072B59C11FAF273600D9A4AE /* Jellyfish.dae in Resources */,
+				072B59C51FAF28D200D9A4AE /* art.scnassets in Resources */,
 				072B59C31FAF27C500D9A4AE /* Jellyfish.scn in Resources */,
 				072B59B31FAF1E1400D9A4AE /* Assets.xcassets in Resources */,
 				072B59B11FAF1E1400D9A4AE /* Main.storyboard in Resources */,
