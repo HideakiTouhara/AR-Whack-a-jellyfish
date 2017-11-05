@@ -44,10 +44,24 @@ class ViewController: UIViewController {
         } else {
             let results = hitTest.first!
             let geometry = results.node.geometry
-            print(geometry)
+            let node = results.node
+            if node.animationKeys.isEmpty {
+                self.animateNode(node: node)
+            }
         }
         
     }
+    
+    func animateNode(node: SCNNode) {
+        let spin = CABasicAnimation(keyPath: "position")
+        spin.fromValue = node.presentation.position
+        spin.toValue = SCNVector3(node.presentation.position.x - 0.2,node.presentation.position.y - 0.2,node.presentation.position.z - 0.2)
+        spin.autoreverses = true
+        spin.duration = 0.2
+        spin.repeatCount = 5
+        node.addAnimation(spin, forKey: "position")
+    }
+
 
     @IBAction func play(_ sender: UIButton) {
         self.addNode()
